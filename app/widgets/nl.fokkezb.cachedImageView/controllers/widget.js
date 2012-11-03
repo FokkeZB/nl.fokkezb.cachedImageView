@@ -1,7 +1,3 @@
-// TODO: image alternatieven voor android types? Of dit dan maar zelf doen met init
-// TODO: directory opgeven (algemeen en per img?)
-// TODO: cacheExpire toevoegen
-
 function cachedImageViewInit(args) {
 	
 	if (args.cacheHires && OS_IOS && Ti.Platform.displayCaps.density === 'high') {
@@ -38,10 +34,6 @@ function cachedImageViewInit(args) {
 	delete args.cacheName;
 	delete args.cacheExtension;
 	delete args.cacheHires;
-	delete args.cacheDir;
-	delete args.cacheExpire;
-	
-	Ti.API.info(args);		
 	
 	for (var k in args) {
 		$.imageView[k] = args[k];	
