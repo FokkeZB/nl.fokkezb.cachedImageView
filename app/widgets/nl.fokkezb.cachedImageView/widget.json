@@ -1,0 +1,13 @@
+{
+	"id": "nl.fokkezb.cachedImageView",
+	"name": "nl.fokkezb.cachedImageView",
+	"description" : "Alloy version of the best practice to cache remote images locally.",
+	"author": "Fokke Zandbergen",
+	"version": "1.0",
+	"copyright":"Copyright (c) 2012",
+	"license":"Public Domain",
+	"min-alloy-version": "1.0",
+	"min-titanium-version":"2.1",
+	"tags":"utility,images,views,caching",
+	"platforms":"android,ios,mobileweb"
+}
