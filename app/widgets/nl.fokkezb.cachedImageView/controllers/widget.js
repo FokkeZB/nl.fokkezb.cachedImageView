@@ -34,7 +34,7 @@ function cachedImageViewInit(args) {
 	delete args.cacheName;
 	delete args.cacheExtension;
 	delete args.cacheHires;
-	
+
 	for (var k in args) {
 		$.imageView[k] = args[k];	
 	}
