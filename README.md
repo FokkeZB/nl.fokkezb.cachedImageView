@@ -13,9 +13,9 @@ The *CachedImageView* widget implements the [best practice of caching remote ima
 * Provide a maximum age for the cached image before re-downloading it.
 
 ## Quick Start
-1. Download the repository of the widget as a ZIP to your project root folder.
-2. Unzip the widget and you'll find it under `app/widgets/nl.fokkezb.cachedImageView`.
-3. Add the widget as a dependency to your `app/config.json` file like so:
+* Download the repository of the widget as a ZIP to your project root folder.
+* Unzip the widget and you'll find it under `app/widgets/nl.fokkezb.cachedImageView`.
+* Add the widget as a dependency to your `app/config.json` file like so:
 
 ```javascript
 	…
@@ -24,12 +24,14 @@ The *CachedImageView* widget implements the [best practice of caching remote ima
 	}
 ```
 
-4. Use the widget in a view just like you'd use an `ImageView`. Only use `Widget` instead of `ImageView` and add the `src` attribute to point to the widget.
+* Use the widget in a view just like you'd use an `ImageView`. Only use `Widget` instead of `ImageView` and add the `src` attribute to point to the widget.
+
 ```xml
 <Widget src="nl.fokkezb.cachedImageView"
 id="civ" image="http://widgets.fokkezb.nl/cachedImageView/appicon.png" />
 ```
-5. Optionally add any of the extra parameters as attributes.
+
+* Optionally add any of the extra parameters as attributes.
 
 ## Additonal parameters
 The only required parameter is the `image` parameter. All parameters are passed on to the resulting *Ti.UI.ImageView*. Except for the following additional parameters that change the widget's behaviour. They can be used both as attributes in the view and when initializing the widget in your controller.
