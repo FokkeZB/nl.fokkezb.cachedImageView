@@ -16,12 +16,14 @@ The *CachedImageView* widget implements the [best practice of caching remote ima
 1. Download the repository of the widget as a ZIP to your project root folder.
 2. Unzip the widget and you'll find it under `app/widgets/nl.fokkezb.cachedImageView`.
 3. Add the widget as a dependency to your `app/config.json` file like so:
+
 ```javascript
 	…
 	"dependencies": {
 		"nl.fokkezb.cachedImageView":"1.0"
 	}
 ```
+
 4. Use the widget in a view just like you'd use an `ImageView`. Only use `Widget` instead of `ImageView` and add the `src` attribute to point to the widget.
 ```xml
 <Widget src="nl.fokkezb.cachedImageView"
@@ -45,6 +47,6 @@ Please note that `$.cid` corresponds to the `id` attribute used in example for r
 
 ```javascript
 $.cid.init({
-    image: OS_IOS ? 'http://widgets.fokkezb.nl/cachedImageView/appicon@2x.png' : 'http://url.to/android.png'
+    image: OS_IOS ? 'http://widgets.fokkezb.nl/cachedImageView/appicon.png' : 'http://url.to/android.png'
 });
 ```
