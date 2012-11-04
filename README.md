@@ -23,12 +23,12 @@ Quick Start
 2. Unzip the widget and you'll find it under `app/widgets/nl.fokkezb.cachedImageView`.
 3. Add the widget as a dependency to your `app/config.json` file like so:
 
-		```javascript
-			...
-			"dependencies": {
-				"nl.fokkezb.cachedImageView":"1.0"
-			}
-		````
+```javascript
+	...
+	"dependencies": {
+		"nl.fokkezb.cachedImageView":"1.0"
+	}
+````
 
 4. Use the widget in a view just like you'd use an `ImageView`. Only use `Widget` instead of `ImageView` and add the `src` attribute to point to the widget.
 
