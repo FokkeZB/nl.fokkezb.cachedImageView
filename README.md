@@ -10,10 +10,11 @@ The *CachedImageView* widget implements the [best practice of caching remote ima
 
 ## Future work
 * Provide a subdirectory to save the image under.
+* Provide a choice to which system directory (cache, data) to save under.
 * Provide a maximum age for the cached image before re-downloading it.
 
 ## Quick Start
-* Download the repository of the [widget as a ZIP file](https://github.com/FokkeZB/nl.fokkezb.cachedImageView/archive/master.zip).
+* [Download the latest version](https://github.com/FokkeZB/nl.fokkezb.cachedImageView/tags) of the widget as a ZIP file.
 * Move the file to your project's root folder.
 * Unzip the file and you'll find the widget under `app/widgets/nl.fokkezb.cachedImageView`.
 * Add the widget as a dependency to your `app/config.json` file like so:
