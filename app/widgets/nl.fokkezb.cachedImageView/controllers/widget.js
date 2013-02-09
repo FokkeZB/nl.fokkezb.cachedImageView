@@ -42,7 +42,7 @@ function cachedImageViewInit(args) {
 	if (saveFile === true) {
 		
 		function saveImage(e) {
-			$.imageView.off('load', saveImage);
+			$.imageView.removeEventListener('load', saveImage);
 						
 			savedFile.write(
 				Ti.UI.createImageView({
@@ -53,7 +53,7 @@ function cachedImageViewInit(args) {
 			);
 		}
 		
-		$.imageView.on('load', saveImage);
+		$.imageView.addEventListener('load', saveImage);
 	}	
 }
 
