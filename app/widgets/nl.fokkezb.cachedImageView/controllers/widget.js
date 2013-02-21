@@ -5,6 +5,11 @@ function cachedImageViewInit(args) {
 		args.hires = true;
 	}
 	
+	// validate image url
+	if(!args.image || !Ti.Platform.canOpenURL(args.image)) {
+	    args.image = "";
+	}
+	
 	if (args.cacheName === undefined) {
 		args.cacheName = Ti.Utils.md5HexDigest(args.image);
 	}
@@ -39,10 +44,11 @@ function cachedImageViewInit(args) {
 		$.imageView[k] = args[k];	
 	}
 	
+	
 	if (saveFile === true) {
 		
 		function saveImage(e) {
-			$.imageView.off('load', saveImage);
+			$.imageView.removeEventlistener('load', saveImage);
 						
 			savedFile.write(
 				Ti.UI.createImageView({
@@ -53,7 +59,7 @@ function cachedImageViewInit(args) {
 			);
 		}
 		
-		$.imageView.on('load', saveImage);
+		$.imageView.addEventListener('load', saveImage);
 	}	
 }
 
@@ -61,6 +67,12 @@ var args = arguments[0] || {};
 
 if (args.image) {
 	cachedImageViewInit(args);
+} else {
+	//parse tss params - otherwise load eventlistener will not work.
+	for (var k in args) {
+		//Ti.API.info(k + " -> " + args[k]);
+		$.imageView[k] = args[k];	
+	}
 }
 
 exports.init = cachedImageViewInit;
