@@ -34,6 +34,7 @@ function cachedImageViewInit(args) {
 	delete args.cacheName;
 	delete args.cacheExtension;
 	delete args.cacheHires;
+	delete args.$model;
 
 	for (var k in args) {
 		$.imageView[k] = args[k];	
@@ -42,7 +43,7 @@ function cachedImageViewInit(args) {
 	if (saveFile === true) {
 		
 		function saveImage(e) {
-			$.imageView.off('load', saveImage);
+			$.imageView.removeEventListener('load', saveImage);
 						
 			savedFile.write(
 				Ti.UI.createImageView({
@@ -53,7 +54,7 @@ function cachedImageViewInit(args) {
 			);
 		}
 		
-		$.imageView.on('load', saveImage);
+		$.imageView.addEventListener('load', saveImage);
 	}	
 }
 

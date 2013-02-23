@@ -67,3 +67,7 @@ You can style the resulting *Ti.UI.ImageView* by applying the styles to the `<Wi
 	preventDefaultImage: true
 }
 ```
+
+## Changelog
+* 1.0.1: Fixed for Alloy 1.0GA
+* 1.0: Initial version
