@@ -22,7 +22,7 @@ The *CachedImageView* widget implements the [best practice of caching remote ima
 ```javascript
 	…
 	"dependencies": {
-		"nl.fokkezb.cachedImageView":"1.0"
+		"nl.fokkezb.cachedImageView":"1.1"
 	}
 ```
 
@@ -69,5 +69,6 @@ You can style the resulting *Ti.UI.ImageView* by applying the styles to the `<Wi
 ```
 
 ## Changelog
+* 1.1: Support for styling via TSS before setting image via init() 
 * 1.0.1: Fixed for Alloy 1.0GA
 * 1.0: Initial version

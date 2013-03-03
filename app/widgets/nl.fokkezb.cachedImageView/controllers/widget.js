@@ -1,33 +1,42 @@
-function cachedImageViewInit(args) {
+var args = arguments[0] || {};
+
+function init(args) {
 	
-	if (args.cacheHires && OS_IOS && Ti.Platform.displayCaps.density === 'high') {
+	if (OS_IOS && args.cacheHires && Ti.Platform.displayCaps.density === 'high') {
 		args.image = args.cacheHires;
 		args.hires = true;
 	}
-	
-	if (args.cacheName === undefined) {
-		args.cacheName = Ti.Utils.md5HexDigest(args.image);
-	}
-	
-	if (args.hires) {
-		args.cacheName = args.cacheName + '@2x';
-	}
 
-	if (args.cacheExtension === undefined) {
-		
-		// from http://stackoverflow.com/a/680982/292947
-		var re = /(?:\.([^.]+))?$/;
-		var ext = re.exec(args.image)[1];
-		
-		args.cacheExtension = ext ? ext : '';
-	}
-
-	var savedFile = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, args.cacheName + '.' + args.cacheExtension)
-	var saveFile = true;
-	
-	if (savedFile.exists()) {
-		args.image = savedFile;		
+	if (!args.image || !Ti.Platform.canOpenURL(args.image)) {
+		delete args.image;
 		saveFile = false;
+
+	} else {
+	
+		if (!args.cacheName) {
+			args.cacheName = Ti.Utils.md5HexDigest(args.image);
+		}
+		
+		if (args.hires) {
+			args.cacheName = args.cacheName + '@2x';
+		}
+
+		if (!args.cacheExtension) {
+			
+			// from http://stackoverflow.com/a/680982/292947
+			var re = /(?:\.([^.]+))?$/;
+			var ext = re.exec(args.image)[1];
+			
+			args.cacheExtension = ext ? ext : '';
+		}
+
+		var savedFile = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, args.cacheName + '.' + args.cacheExtension)
+		var saveFile = true;
+		
+		if (savedFile.exists()) {
+			args.image = savedFile;		
+			saveFile = false;
+		}
 	}
 	
 	delete args.id;
@@ -36,9 +45,7 @@ function cachedImageViewInit(args) {
 	delete args.cacheHires;
 	delete args.$model;
 
-	for (var k in args) {
-		$.imageView[k] = args[k];	
-	}
+	$.imageView.applyProperties(args);
 	
 	if (saveFile === true) {
 		
@@ -55,13 +62,11 @@ function cachedImageViewInit(args) {
 		}
 		
 		$.imageView.addEventListener('load', saveImage);
-	}	
+	}
 }
 
-var args = arguments[0] || {};
-
-if (args.image) {
-	cachedImageViewInit(args);
+if (_.size(args) > 0) {
+	init(args);
 }
 
-exports.init = cachedImageViewInit;
+exports.init = init;
