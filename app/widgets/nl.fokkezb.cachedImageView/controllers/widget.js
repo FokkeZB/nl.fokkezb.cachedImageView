@@ -30,7 +30,7 @@ function init(args) {
 			args.cacheExtension = ext ? ext : '';
 		}
 
-		var savedFile = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, args.cacheName + '.' + args.cacheExtension)
+		var savedFile = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, args.cacheName + '.' + args.cacheExtension);
 		var saveFile = true;
 		
 		if (savedFile.exists()) {
