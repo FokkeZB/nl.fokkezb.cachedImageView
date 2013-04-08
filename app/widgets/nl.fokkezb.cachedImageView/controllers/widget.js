@@ -1,8 +1,9 @@
-var args = arguments[0] || {};
+var args = arguments[0] || {},
+    hires = (Ti.Platform.displayCaps.density === 'high');
 
 function init(args) {
 	
-	if (OS_IOS && args.cacheHires && Ti.Platform.displayCaps.density === 'high') {
+	if (OS_IOS && args.cacheHires && hires) {
 		args.image = args.cacheHires;
 		args.hires = true;
 	}
@@ -45,7 +46,7 @@ function init(args) {
 	delete args.cacheHires;
 	delete args.$model;
 	delete args.__parentSymbol;
-
+	
 	$.imageView.applyProperties(args);
 	
 	if (saveFile === true) {
@@ -66,8 +67,6 @@ function init(args) {
 	}
 }
 
-if (_.size(args) > 0) {
-	init(args);
-}
+init(args);
 
 exports.init = init;
