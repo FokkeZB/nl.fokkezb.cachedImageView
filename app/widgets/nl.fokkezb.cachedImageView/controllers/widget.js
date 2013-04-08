@@ -44,6 +44,7 @@ function init(args) {
 	delete args.cacheExtension;
 	delete args.cacheHires;
 	delete args.$model;
+	delete args.__parentSymbol;
 
 	$.imageView.applyProperties(args);
 	
