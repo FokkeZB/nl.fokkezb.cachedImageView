@@ -22,7 +22,7 @@ The *CachedImageView* widget implements the [best practice of caching remote ima
 ```javascript
 	…
 	"dependencies": {
-		"nl.fokkezb.cachedImageView":"1.1"
+		"nl.fokkezb.cachedImageView":"1.2"
 	}
 ```
 
@@ -44,10 +44,19 @@ The only required parameter is the `image` parameter. All parameters are passed 
 | cacheName | *string*  | Basename for the local file instead of the MD5 hash of the URL. Use it when the URL contains some time-dependant key. |
 | cacheExt | *string* | Extension for the local file if the URL doesn't have one, like with generated images. |
 
+## Methods
+
+| Method | Params | Description |
+| ------ | ------ | ----------- |
+| init   | *object* | Any ImageView parameters plus the additional above |
+| applyProperties | *object* | Alias for `init` |
+| setImage | *string* | Alias for calling `init` with only an `image` parameter |
+| getImage | *bool* returnPath | Return the (path to the) local image. Calling this method before it has been cached will return `undefined` |
+
 ## Initialization in the Controller
 If you don't include the `image` parameter as an attribute in `<Widget/>`, the resulting *Ti.UI.ImageView* will not be automatically initialized for you. This allows you to do this yourself in your controller. This can be usefull if you want to add some advanced decission logic to determine which image to use. If this would only depend on the *formFactor* and *platform* however, I would recommend using [conditional code](http://docs.appcelerator.com/titanium/3.0/#!/guide/Alloy_Views-section-34636249_AlloyViews-ConditionalCode) in `<Widget/>` instead.
 
-**NOTE:** The `$.cid` in the example below corresponds to the `id` attribute in the `<Widget/>` example. You can change it to whatever value.
+**NOTE:** The `$.cid` in the example below corresponds to the `id` attribute in the `<Widget/>` example. You can change it to whatever value. From 1.2 on you can also call the more common `applyProperties`.
 
 ```javascript
 $.cid.init({
@@ -69,6 +78,7 @@ You can style the resulting *Ti.UI.ImageView* by applying the styles to the `<Wi
 ```
 
 ## Changelog
+* 1.2: Added `getImage`, `setImage`, `applyProperties` and deleted `__parentSybmol`
 * 1.1: Support for styling via TSS before setting image via init() 
 * 1.0.1: Fixed for Alloy 1.0GA
 * 1.0: Initial version

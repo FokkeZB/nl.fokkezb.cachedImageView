@@ -1,8 +1,33 @@
-var args = arguments[0] || {};
+var args = arguments[0] || {},
+    hires = (Ti.Platform.displayCaps.density === 'high'),
+    savedFile;
+  
+function setImage(image) {
+    init({
+        image: image 
+    });
+}
+
+function getImage(path) {
+    var img = savedFile ? savedFile : $.imageView.image;
+    
+    if (path && typeof img !== 'string') {
+        
+        if (img.resolve) {
+            return img.resolve();
+        } else if (img.nativePath) {
+            return img.nativePath;
+        } else {
+            return undefined;
+        }
+    }
+    
+    return img;
+}
 
 function init(args) {
 	
-	if (OS_IOS && args.cacheHires && Ti.Platform.displayCaps.density === 'high') {
+	if (OS_IOS && args.cacheHires && hires) {
 		args.image = args.cacheHires;
 		args.hires = true;
 	}
@@ -30,7 +55,8 @@ function init(args) {
 			args.cacheExtension = ext ? ext : '';
 		}
 
-		var savedFile = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, args.cacheName + '.' + args.cacheExtension)
+		savedFile = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, args.cacheName + '.' + args.cacheExtension);
+		
 		var saveFile = true;
 		
 		if (savedFile.exists()) {
@@ -44,6 +70,7 @@ function init(args) {
 	delete args.cacheExtension;
 	delete args.cacheHires;
 	delete args.$model;
+	delete args.__parentSymbol;
 
 	$.imageView.applyProperties(args);
 	
@@ -51,22 +78,22 @@ function init(args) {
 		
 		function saveImage(e) {
 			$.imageView.removeEventListener('load', saveImage);
-						
-			savedFile.write(
-				Ti.UI.createImageView({
-					image: $.imageView.image,
-					width: Ti.UI.SIZE,
-					height: Ti.UI.SIZE
-				}).toImage()
-			);
+			
+            savedFile.write(Ti.UI.createImageView({
+                image: $.imageView.image,
+                width: Ti.UI.SIZE,
+                height: Ti.UI.SIZE,
+                preventDefaultImage: true
+            }).toImage());
 		}
 		
 		$.imageView.addEventListener('load', saveImage);
 	}
 }
 
-if (_.size(args) > 0) {
-	init(args);
-}
+init(args);
 
 exports.init = init;
+exports.applyProperties = init;
+exports.setImage = setImage;
+exports.getImage = getImage;
