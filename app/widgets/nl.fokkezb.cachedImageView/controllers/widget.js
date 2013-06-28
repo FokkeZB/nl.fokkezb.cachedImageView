@@ -32,7 +32,7 @@ function init(args) {
 		args.hires = true;
 	}
 
-	if (!args.image || !Ti.Platform.canOpenURL(args.image)) {
+	if (!args.image || (OS_IOS && !Ti.Platform.canOpenURL(args.image))) {
 		delete args.image;
 		saveFile = false;
 
