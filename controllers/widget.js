@@ -6,6 +6,8 @@ function setImage(image) {
     init({
         image: image 
     });
+    
+    return;
 }
 
 function getImage(path) {
@@ -32,14 +34,14 @@ function init(args) {
 		args.hires = true;
 	}
 
-	if (!args.image || !Ti.Platform.canOpenURL(args.image)) {
+	if (!args.image || (_.isString(args.image) && !Ti.Platform.canOpenURL(args.image))) {
 		delete args.image;
 		saveFile = false;
 
-	} else {
+	} else if (!args.cacheNot) {
 	
 		if (!args.cacheName) {
-			args.cacheName = Ti.Utils.md5HexDigest(args.image);
+			args.cacheName = Ti.Utils.md5HexDigest(_.isString(args.image) ? args.image : args.image.nativePath);
 		}
 		
 		if (args.hires) {
@@ -93,7 +95,13 @@ function init(args) {
 
 init(args);
 
-exports.init = init;
-exports.applyProperties = init;
+Object.defineProperty($, "image", {
+    get: getImage,
+    set: setImage
+});
+
 exports.setImage = setImage;
 exports.getImage = getImage;
+
+exports.init = init;
+exports.applyProperties = init;
