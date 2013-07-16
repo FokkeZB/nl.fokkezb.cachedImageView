@@ -22,7 +22,7 @@ The *CachedImageView* widget implements the [best practice of caching remote ima
 ```javascript
 	…
 	"dependencies": {
-		"nl.fokkezb.cachedImageView":"1.2"
+		"nl.fokkezb.cachedImageView":"1.3"
 	}
 ```
 
@@ -43,6 +43,7 @@ The only required parameter is the `image` parameter. All parameters are passed 
 | cacheHires | *string* | URL of the image to use for iOS retina devices. |
 | cacheName | *string*  | Basename for the local file instead of the MD5 hash of the URL. Use it when the URL contains some time-dependant key. |
 | cacheExt | *string* | Extension for the local file if the URL doesn't have one, like with generated images. |
+| cacheNot | *string* | Disable caching |
 
 ## Methods
 
@@ -52,6 +53,12 @@ The only required parameter is the `image` parameter. All parameters are passed 
 | applyProperties | *object* | Alias for `init` |
 | setImage | *string* | Alias for calling `init` with only an `image` parameter |
 | getImage | *bool* returnPath | Return the (path to the) local image. Calling this method before it has been cached will return `undefined` |
+
+## Properties
+
+| Property | Description |
+| ---------|-------------|
+| image    | Alias to setImage and getImage methods |
 
 ## Initialization in the Controller
 If you don't include the `image` parameter as an attribute in `<Widget/>`, the resulting *Ti.UI.ImageView* will not be automatically initialized for you. This allows you to do this yourself in your controller. This can be usefull if you want to add some advanced decission logic to determine which image to use. If this would only depend on the *formFactor* and *platform* however, I would recommend using [conditional code](http://docs.appcelerator.com/titanium/3.0/#!/guide/Alloy_Views-section-34636249_AlloyViews-ConditionalCode) in `<Widget/>` instead.
@@ -78,6 +85,7 @@ You can style the resulting *Ti.UI.ImageView* by applying the styles to the `<Wi
 ```
 
 ## Changelog
+* 1.3: Fixed bug when using blob/file, added `image` property and `cacheNot` param
 * 1.2: Added `getImage`, `setImage`, `applyProperties` and deleted `__parentSybmol`
 * 1.1: Support for styling via TSS before setting image via init() 
 * 1.0.1: Fixed for Alloy 1.0GA
