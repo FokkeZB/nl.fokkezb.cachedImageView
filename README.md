@@ -30,7 +30,7 @@ The *CachedImageView* widget implements the [best practice of caching remote ima
 
 ```xml
 <Widget src="nl.fokkezb.cachedImageView"
-id="civ" image="http://widgets.fokkezb.nl/cachedImageView/appicon.png" />
+id="civ" image="http://url.to/image.png" />
 ```
 
 * Optionally add any of the additional parameters as attributes.
@@ -60,7 +60,7 @@ If you don't include the `image` parameter as an attribute in `<Widget/>`,
 
 ```javascript
 $.cid.init({
-    image: OS_IOS ? 'http://widgets.fokkezb.nl/cachedImageView/appicon.png' : 'http://url.to/android.png'
+    image: OS_IOS ? 'http://url.to/image.png' : 'http://url.to/android-image.png'
 });
 ```
 
