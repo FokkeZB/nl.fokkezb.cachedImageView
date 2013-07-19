@@ -41,8 +41,19 @@ function init(args) {
 	} else if (!args.cacheNot) {
 	
 		if (!args.cacheName) {
-			args.cacheName = Ti.Utils.md5HexDigest(_.isString(args.image) ? args.image : args.image.nativePath);
+			
+			if (_.isString(args.image)) {
+				args.cacheName = args.image;
+			
+			} else if (args.image.nativePath) {
+				args.cacheName = args.image.nativePath;
+			
+			} else {
+				throw new Error('For non-file blobs you need to set a cacheName manually.');
+			}
 		}
+		
+		args.cacheName = Ti.Utils.md5HexDigest(args.cacheName);
 		
 		if (args.hires) {
 			args.cacheName = args.cacheName + '@2x';
