@@ -85,6 +85,7 @@ You can style the resulting *Ti.UI.ImageView* by applying the styles to the `<Wi
 ```
 
 ## Changelog
+* 1.3.1: Fixed for Android
 * 1.3: Fixed bug when using blob/file, added `image` property and `cacheNot` param
 * 1.2: Added `getImage`, `setImage`, `applyProperties` and deleted `__parentSybmol`
 * 1.1: Support for styling via TSS before setting image via init() 

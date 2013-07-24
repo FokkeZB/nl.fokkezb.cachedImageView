@@ -34,7 +34,7 @@ function init(args) {
 		args.hires = true;
 	}
 
-	if (!args.image || (_.isString(args.image) && !Ti.Platform.canOpenURL(args.image))) {
+	if (!args.image || (OS_IOS && _.isString(args.image) && !Ti.Platform.canOpenURL(args.image))) {
 		delete args.image;
 		saveFile = false;
 
