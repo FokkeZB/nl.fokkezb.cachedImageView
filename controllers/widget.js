@@ -107,8 +107,8 @@ function init(args) {
 init(args);
 
 Object.defineProperty($, "image", {
-    get: getImage,
-    set: setImage
+	get: getImage,
+	set: setImage
 });
 
 exports.setImage = setImage;
@@ -116,3 +116,15 @@ exports.getImage = getImage;
 
 exports.init = init;
 exports.applyProperties = init;
+
+exports.on = function(name, callback) {
+	return $.imageView.addEventListener(name, callback);
+};
+
+exports.off = function(name, callback) {
+	return $.imageView.removeEventListener(name, callback);
+};
+
+exports.trigger = function(name, e) {
+	return $.imageView.fireEvent(name, e);
+};
