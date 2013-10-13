@@ -117,14 +117,14 @@ exports.getImage = getImage;
 exports.init = init;
 exports.applyProperties = init;
 
-exports.on = function(name, callback) {
+exports.on = exports.addEventListener = function(name, callback) {
 	return $.imageView.addEventListener(name, callback);
 };
 
-exports.off = function(name, callback) {
+exports.off = exports.removeEventListener = function(name, callback) {
 	return $.imageView.removeEventListener(name, callback);
 };
 
-exports.trigger = function(name, e) {
+exports.trigger = exports.fireEvent = function(name, e) {
 	return $.imageView.fireEvent(name, e);
 };

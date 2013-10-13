@@ -10,6 +10,7 @@ The *CachedImageView* widget implements the [best practice of caching remote ima
 * Provide a seperate URL for the image to use on IOS retina devices.
 * Provide a local filename to be used instead of the MD5 hash of the URL.
 * Provide an extension for the local file if the remote doesn't have one.
+* Eventing.
 
 ## Future work
 * Provide a subdirectory to save the image under.
@@ -25,7 +26,7 @@ The *CachedImageView* widget implements the [best practice of caching remote ima
 ```javascript
 	…
 	"dependencies": {
-		"nl.fokkezb.cachedImageView":"1.3"
+		"nl.fokkezb.cachedImageView":"1.4"
 	}
 ```
 
@@ -33,7 +34,7 @@ The *CachedImageView* widget implements the [best practice of caching remote ima
 
 ```xml
 <Widget src="nl.fokkezb.cachedImageView"
-id="civ" image="http://url.to/image.png" />
+id="civ" image="http://url.to/image.png" onClick="handleClick" />
 ```
 
 * Optionally add any of the additional parameters as attributes.
@@ -56,6 +57,9 @@ The only required parameter is the `image` parameter. All parameters are passed 
 | applyProperties | *object* | Alias for `init` |
 | setImage | *string* | Alias for calling `init` with only an `image` parameter |
 | getImage | *bool* returnPath | Return the (path to the) local image. Calling this method before it has been cached will return `undefined` |
+| on / addEventListener | *string* name, *function* callback | Add an eventlistener |
+| off / removeEventListener | *string* name, *function* callback | Remove an eventlistener |
+| trigger / fireEvent | *string* name, *object* args | Fire an event |
 
 ## Properties
 
@@ -88,9 +92,27 @@ You can style the resulting *Ti.UI.ImageView* by applying the styles to the `<Wi
 ```
 
 ## Changelog
-* 1.3.1: Fixed for Android
+* 1.4: Added events
 * 1.3: Fixed bug when using blob/file, added `image` property and `cacheNot` param
 * 1.2: Added `getImage`, `setImage`, `applyProperties` and deleted `__parentSybmol`
 * 1.1: Support for styling via TSS before setting image via init() 
-* 1.0.1: Fixed for Alloy 1.0GA
 * 1.0: Initial version
+
+## License
+
+<pre>
+Copyright 2013 Fokke Zandbergen
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+</pre>
+
