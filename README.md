@@ -1,6 +1,6 @@
 # CachedImageView Widget
 
-**NOTE:** Titanium seems to have built-in remote image caching in iOS since about 2.x and in Android since 3.x. This is not documented, but I've created a [ticket ](https://jira.appcelerator.org/browse/TC-2676)for this to be done.
+**NOTE:** Titanium has built-in remote image caching for Android since 3.1 and for iOS since the early days. This is not documented, but a [ticket](https://jira.appcelerator.org/browse/TC-2676) I created for this to be done has been resolved recently.
 
 ## Overview
 The *CachedImageView* widget implements the [best practice of caching remote images](http://docs.appcelerator.com/titanium/latest/#!/guide/Image_Best_Practices-section-30082525_ImageBestPractices-Cachingremoteimages) for [Titanium](http://www.appcelerator.com/platform) [Alloy](http://projects.appcelerator.com/alloy/docs/Alloy-bootstrap/index.html) by [Appcelerator](http://www.appcelerator.com).
