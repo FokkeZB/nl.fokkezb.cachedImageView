@@ -68,7 +68,7 @@ function init(args) {
 			args.cacheExtension = ext ? ext : '';
 		}
 
-		savedFile = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, args.cacheName + '.' + args.cacheExtension);
+		savedFile = Ti.Filesystem.getFile(Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory).nativePah, args.cacheName + '.' + args.cacheExtension);
 		
 		var saveFile = true;
 		
