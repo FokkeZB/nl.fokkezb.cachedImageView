@@ -1,6 +1,6 @@
-# CachedImageView Widget
+> **NOTE:** Titanium has built-in remote image caching for Android since 3.1 and for iOS since the early days. This is not documented, but a [ticket](https://jira.appcelerator.org/browse/TC-2676) I created for this to be done has been resolved recently. For this reason I no longer maintain this widget.
 
-**NOTE:** Titanium has built-in remote image caching for Android since 3.1 and for iOS since the early days. This is not documented, but a [ticket](https://jira.appcelerator.org/browse/TC-2676) I created for this to be done has been resolved recently.
+# CachedImageView Widget [![Titanium](http://www-static.appcelerator.com/badges/titanium-git-badge-sq.png)](http://www.appcelerator.com/titanium/) [![Alloy](http://www-static.appcelerator.com/badges/alloy-git-badge-sq.png)](http://www.appcelerator.com/alloy/)
 
 ## Overview
 The *CachedImageView* widget implements the [best practice of caching remote images](http://docs.appcelerator.com/titanium/latest/#!/guide/Image_Best_Practices-section-30082525_ImageBestPractices-Cachingremoteimages) for [Titanium](http://www.appcelerator.com/platform) [Alloy](http://projects.appcelerator.com/alloy/docs/Alloy-bootstrap/index.html) by [Appcelerator](http://www.appcelerator.com).
@@ -18,26 +18,19 @@ The *CachedImageView* widget implements the [best practice of caching remote ima
 * Provide a maximum age for the cached image before re-downloading it.
 
 ## Quick Start
-* [Download the latest version](https://github.com/FokkeZB/nl.fokkezb.cachedImageView/tags) of the widget as a ZIP file.
-* Move the file to your project's root folder.
-* Unzip the file and you'll find the widget under `app/widgets/nl.fokkezb.cachedImageView`.
-* Add the widget as a dependency to your `app/config.json` file like so:
 
-```javascript
-	…
-	"dependencies": {
-		"nl.fokkezb.cachedImageView":"1.4"
-	}
-```
+### Get it [![gitTio](http://gitt.io/badge.png)](http://gitt.io/component/nl.fokkezb.cachedImageView)
+Download this repository and consult the [Alloy Documentation](http://docs.appcelerator.com/titanium/latest/#!/guide/Alloy_XML_Markup-section-35621528_AlloyXMLMarkup-ImportingWidgets) on how to install it, or simply use the [gitTio CLI](http://gitt.io/cli):
 
-* Use the widget in a view just like you'd use an `ImageView`. Only use `Widget` instead of `ImageView` and add the `src` attribute to point to the widget.
+`$ gittio install nl.fokkezb.cachedImageView`
+
+### Use it
+Use the widget in a view just like you'd use an `ImageView`. Only use `Widget` instead of `ImageView` and add the `src` attribute to point to the widget. Optionally add any of the additional parameters as attributes.
 
 ```xml
 <Widget src="nl.fokkezb.cachedImageView"
 id="civ" image="http://url.to/image.png" onClick="handleClick" />
 ```
-
-* Optionally add any of the additional parameters as attributes.
 
 ## Additonal parameters
 The only required parameter is the `image` parameter. All parameters are passed on to the resulting *Ti.UI.ImageView*. You can add the following additional parameters to change the widget's behaviour. They can be used both as attributes in `<Widget>` and when initializing the widget in your controller.
